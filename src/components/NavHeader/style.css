@@ -1,0 +1,40 @@
+header {
+  height: 10vh;
+  background-color: var(--primary-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hamburguer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  position: fixed;
+  width: 100%;
+}
+.hamburguer-nav ul {
+  text-align: center;
+}
+
+.hamburguer-nav li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+  border-bottom: 0.5px solid var(--background-color);
+  padding: 0.2rem;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+h2 {
+  color: white;
+}

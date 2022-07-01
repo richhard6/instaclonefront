@@ -1,0 +1,8 @@
+main {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.posts-list {
+  padding: 1rem;
+}
