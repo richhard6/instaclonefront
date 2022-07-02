@@ -1,8 +1,39 @@
 main {
   max-width: 1200px;
   margin: auto;
+  padding: 1rem;
+}
+
+.input-search {
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  width: 60%;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.search-container > div:nth-child(1) {
+  flex: 1 1 80%;
+}
+
+.search-container div:nth-child(2) {
+  flex: 1 1 20%;
+}
+
+.search-container > div > p {
+  color: red;
+  position: absolute;
+  bottom: -50%;
+}
+
+.post-info {
+  display: flex;
 }
 
 .posts-list {
-  padding: 1rem;
 }

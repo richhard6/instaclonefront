@@ -21,7 +21,7 @@ const NavHeader = () => {
   return (
     <div className="container">
       <header>
-        {user && <p>@{user.username}</p>}
+        {user && <h3>@{user.username}</h3>}
         <h2>Instaclone</h2>
         {!user && (
           <div>

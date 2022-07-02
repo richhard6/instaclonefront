@@ -1,3 +1,57 @@
+.post-container {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
 .post-image {
   width: 100%;
+}
+
+.post-info {
+  padding: 0.7rem;
+}
+
+.post-info > div:nth-child(2) {
+  position: relative;
+  width: 100%;
+}
+
+.post-info > div:nth-child(2) > * {
+  margin-bottom: 0.5rem;
+}
+
+.post-info > div:nth-child(2) > :nth-child(4) {
+  font-weight: 650;
+  cursor: pointer;
+}
+.post-info > div:nth-child(2) > time {
+  position: absolute;
+  font-size: 0.8rem;
+  top: 0;
+  right: 0;
+}
+
+.like-container {
+  display: flex;
+  align-items: center;
+  margin-right: 0.8rem;
+}
+
+.comments-section {
+  position: absolute;
+  background: var(--primary-color);
+  width: 100%;
+  padding: 0.5rem;
+  word-wrap: break-word;
+  border-radius: 3px;
+}
+
+.comments-section > div {
+  margin-bottom: 0.5rem;
+}
+
+.comments-section > div > p {
+  font-weight: 250;
 }
