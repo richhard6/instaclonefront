@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './styles.css';
 import { format } from 'date-fns';
 import { useUser } from '../../context/UserContext';
+import Button from '../Button/Button';
+import { useModal } from '../../context/ModalContext';
 
 const Post = ({
   username,
@@ -11,9 +13,12 @@ const Post = ({
   createdAt,
   id,
   likes,
+  likedByMe,
   setUpdate,
 }) => {
   const [show, setShow] = useState(false);
+
+  const [, setModal] = useModal();
 
   const { token } = useUser();
 
@@ -50,16 +55,22 @@ const Post = ({
       />
       <div className="post-info">
         <div className="like-container">
-          <button onClick={handleLike}>❤️</button> <span>{likes}</span>
+          <button onClick={token && handleLike}>
+            {likedByMe ? '❤️' : '🤍'}
+          </button>
+          <span>{likes}</span>
         </div>
         <div>
           <h3>@{username}</h3>
           <p>{caption}</p>
           <time dateTime={dateTime}>{dateWithHour}</time>
 
-          <p onClick={() => setShow((prevState) => !prevState)}>
-            {show ? 'Close comments' : 'View all comments'}
-          </p>
+          <div>
+            <p onClick={() => setShow((prevState) => !prevState)}>
+              {show ? 'Close comments' : 'View all comments'}
+            </p>
+            <Button name="Add comment" onClick={() => setModal(<input />)} />
+          </div>
           <div className={`${show ? 'comments-section' : 'hide'}`}>
             {show &&
               comments

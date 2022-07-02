@@ -24,6 +24,12 @@
 
 .post-info > div:nth-child(2) > :nth-child(4) {
   font-weight: 650;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.post-info > div:nth-child(2) > :nth-child(4) > p {
   cursor: pointer;
 }
 .post-info > div:nth-child(2) > time {

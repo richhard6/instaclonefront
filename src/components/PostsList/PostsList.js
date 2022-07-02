@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from '../Button/Button';
 import Post from '../Post/Post';
 import { useUser } from '../../context/UserContext';
@@ -16,10 +16,18 @@ const PostsList = () => {
   const { token } = useUser();
 
   useEffect(() => {
+    const params = token
+      ? {
+          headers: {
+            Authorization: token,
+          },
+        }
+      : {};
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/posts?query=${keyword}`
+          `http://localhost:4000/posts?query=${keyword}`,
+          params
         );
 
         const data = await response.json();
@@ -38,7 +46,7 @@ const PostsList = () => {
     };
 
     fetchPosts();
-  }, [keyword, update]);
+  }, [keyword, update, token]);
 
   const handleSearch = () => {
     setKeyword(ref.current.value);
@@ -75,6 +83,7 @@ const PostsList = () => {
               likes,
               picture,
               username,
+              likedByMe,
             }) => (
               <Post
                 caption={caption}
@@ -84,6 +93,7 @@ const PostsList = () => {
                 picture={picture}
                 username={username}
                 setUpdate={setUpdate}
+                likedByMe={likedByMe}
                 id={id}
                 key={id}
               />
