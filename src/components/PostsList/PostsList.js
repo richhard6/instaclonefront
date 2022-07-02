@@ -72,7 +72,10 @@ const PostsList = () => {
         </div>
         {token && (
           <div>
-            <Button onClick={() => setModal(<CreatePost />)} name="+" />
+            <Button
+              onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
+              name="+"
+            />
           </div>
         )}
       </div>

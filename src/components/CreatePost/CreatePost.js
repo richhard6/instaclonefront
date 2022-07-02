@@ -1,12 +1,15 @@
 import React, { useRef, useState } from 'react';
+import { useModal } from '../../context/ModalContext';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import './styles.css';
 
-const CreatePost = () => {
+const CreatePost = ({ setUpdate }) => {
   const ref = useRef();
 
   const [loading, setLoading] = useState(false);
+
+  const [, setModal] = useModal();
 
   const [success, setSuccess] = useState(false);
 
@@ -22,9 +25,6 @@ const CreatePost = () => {
     try {
       const formData = new FormData(ref.current);
 
-      console.log(ref.current);
-      console.log(formData);
-
       const response = await fetch('http://localhost:4000/posts/newPost', {
         method: 'POST',
         headers: {
@@ -39,12 +39,14 @@ const CreatePost = () => {
         setError(data.message);
       } else {
         setSuccess(true);
+        setUpdate((prevState) => !prevState);
       }
     } catch (err) {
       console.error(err);
       setError(err.message);
     } finally {
       setLoading(false);
+      setModal(null);
     }
   };
 
@@ -54,14 +56,14 @@ const CreatePost = () => {
         ref={ref}
         className="create-post"
         id="postCreate"
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e)}
       >
-        <input type="file" id="caption" name="caption" />
+        <input type="file" id="image" name="image" />
         <textarea
           cols="30"
           rows="10"
-          id="image"
-          name="image"
+          id="caption"
+          name="caption"
           placeholder="Write your caption"
         ></textarea>
         <Button name="Post" disabled={loading} />
