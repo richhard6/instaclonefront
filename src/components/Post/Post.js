@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './styles.css';
 import { format } from 'date-fns';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import { useModal } from '../../context/ModalContext';
+import CreateComment from '../CreateComment/CreateComment';
 
 const Post = ({
   username,
@@ -21,8 +22,6 @@ const Post = ({
   const [, setModal] = useModal();
 
   const { token } = useUser();
-
-  console.log(comments);
 
   const dateTime = format(new Date(createdAt), 'yyyy-MM-dd');
   const dateWithHour = format(new Date(createdAt), 'hh:mm - dd/MM/yyyy');
@@ -69,7 +68,20 @@ const Post = ({
             <p onClick={() => setShow((prevState) => !prevState)}>
               {show ? 'Close comments' : 'View all comments'}
             </p>
-            <Button name="Add comment" onClick={() => setModal(<input />)} />
+            <Button
+              name="Add comment"
+              onClick={() =>
+                setModal(
+                  <CreateComment
+                    setShow={setShow}
+                    setUpdate={setUpdate}
+                    setModal={setModal}
+                    token={token}
+                    id={id}
+                  />
+                )
+              }
+            />
           </div>
           <div className={`${show ? 'comments-section' : 'hide'}`}>
             {show &&

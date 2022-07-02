@@ -11,15 +11,17 @@ header {
 .container {
   max-width: 1200px;
   margin: auto;
+  position: relative;
 }
 
 .hamburguer-nav {
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
   background-color: var(--secondary-color);
-  position: fixed;
   width: 100%;
+  z-index: 11111;
 }
 .hamburguer-nav ul {
   text-align: center;

@@ -15,15 +15,16 @@ main {
   align-items: center;
   position: relative;
   margin-bottom: 2rem;
+  justify-content: space-around;
 }
 
-.search-container > div:nth-child(1) {
+/* .search-container > div:nth-child(1) {
   flex: 1 1 80%;
 }
 
 .search-container div:nth-child(2) {
   flex: 1 1 20%;
-}
+} */
 
 .search-container > div > p {
   color: red;
