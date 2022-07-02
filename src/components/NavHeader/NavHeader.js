@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
@@ -36,9 +37,13 @@ const NavHeader = () => {
       {show && (
         <div className="hamburguer-nav">
           <ul>
-            <li>Profile</li>
-            <li>Feed</li>
-            <li>Create Post</li>
+            <Link to="/" onClick={() => setShow(false)}>
+              <li>Feed</li>
+            </Link>
+            <Link to={`/profile/${user.id}`} onClick={() => setShow(false)}>
+              <li>Profile</li>
+            </Link>
+
             <li onClick={handleLogOut}>Log Out</li>
           </ul>
         </div>

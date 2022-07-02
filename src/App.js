@@ -6,6 +6,7 @@ import Register from './components/Register/Register';
 import PostsList from './components/PostsList/PostsList';
 import Modal from './components/Modal/Modal';
 import { useModal } from './context/ModalContext';
+import Profile from './components/Profile/Profile';
 
 function App() {
   const [modal] = useModal();
@@ -16,8 +17,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<PostsList />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile/:userId" element={<Profile />} />
       </Routes>
     </>
   );

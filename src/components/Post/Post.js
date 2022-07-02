@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+
 import './styles.css';
 import { format } from 'date-fns';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import { useModal } from '../../context/ModalContext';
 import CreateComment from '../CreateComment/CreateComment';
+import { Link } from 'react-router-dom';
 
 const Post = ({
   username,
@@ -15,6 +17,7 @@ const Post = ({
   id,
   likes,
   likedByMe,
+  userId,
   setUpdate,
 }) => {
   const [show, setShow] = useState(false);
@@ -60,7 +63,9 @@ const Post = ({
           <span>{likes}</span>
         </div>
         <div>
-          <h3>@{username}</h3>
+          <Link to={`/profile/${userId}`}>
+            <h3>@{username}</h3>
+          </Link>
           <p>{caption}</p>
           <time dateTime={dateTime}>{dateWithHour}</time>
 

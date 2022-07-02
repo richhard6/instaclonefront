@@ -91,6 +91,7 @@ const PostsList = () => {
               picture,
               username,
               likedByMe,
+              userId,
             }) => (
               <Post
                 caption={caption}
@@ -101,6 +102,7 @@ const PostsList = () => {
                 username={username}
                 setUpdate={setUpdate}
                 likedByMe={likedByMe}
+                userId={userId}
                 id={id}
                 key={id}
               />
