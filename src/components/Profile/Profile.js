@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
+import Button from '../Button/Button';
 import Post from '../Post/Post';
 
 const Profile = () => {
@@ -14,7 +15,9 @@ const Profile = () => {
 
   const [error, setError] = useState();
 
-  const { token } = useUser();
+  const { token, user } = useUser();
+
+  console.log(user);
 
   useEffect(() => {
     const params = token
@@ -35,7 +38,7 @@ const Profile = () => {
 
         if (data.status === 'ok') {
           setPosts(data.data.posts);
-          setUsername(data.data.user);
+          setUsername(data.data.user.username);
         } else {
           setError(data.message);
         }
@@ -45,10 +48,24 @@ const Profile = () => {
     };
 
     fetchPosts();
-  }, [token, userId]);
+  }, [token, userId, update]);
 
   return (
     <main>
+      <div className="user-data">
+        <div className="username-container">
+          <p>{username}</p>
+          {user && user.id === Number(userId) && (
+            <Button name="Change username" />
+          )}
+        </div>
+        {user && user.id === Number(userId) && (
+          <div>
+            <p>******</p>
+            <Button name="Change password" />
+          </div>
+        )}
+      </div>
       <div className="posts-list">
         {posts &&
           posts.map(
