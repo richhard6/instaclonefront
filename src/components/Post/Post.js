@@ -65,9 +65,12 @@ const Post = ({
           <time dateTime={dateTime}>{dateWithHour}</time>
 
           <div>
-            <p onClick={() => setShow((prevState) => !prevState)}>
-              {show ? 'Close comments' : 'View all comments'}
-            </p>
+            {comments && (
+              <p onClick={() => setShow((prevState) => !prevState)}>
+                {show ? 'Close comments' : 'View all comments'}
+              </p>
+            )}
+            {!comments && <p></p>}
             {token && (
               <Button
                 name="Add comment"
@@ -87,6 +90,7 @@ const Post = ({
           </div>
           <div className={`${show ? 'comments-section' : 'hide'}`}>
             {show &&
+              comments &&
               comments
                 .sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
                 .map(({ comment, id, username }) => {

@@ -18,14 +18,6 @@ main {
   justify-content: space-around;
 }
 
-/* .search-container > div:nth-child(1) {
-  flex: 1 1 80%;
-}
-
-.search-container div:nth-child(2) {
-  flex: 1 1 20%;
-} */
-
 .search-container > div > p {
   color: #cc0000;
   position: absolute;
@@ -36,5 +28,10 @@ main {
   display: flex;
 }
 
-.posts-list {
+@media screen and (min-width: 680px) {
+  .posts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 0.5rem;
+  }
 }

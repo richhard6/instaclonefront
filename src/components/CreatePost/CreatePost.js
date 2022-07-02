@@ -40,13 +40,13 @@ const CreatePost = ({ setUpdate }) => {
       } else {
         setSuccess(true);
         setUpdate((prevState) => !prevState);
+        setModal(null);
       }
     } catch (err) {
       console.error(err);
       setError(err.message);
     } finally {
       setLoading(false);
-      setModal(null);
     }
   };
 

@@ -6,6 +6,7 @@
   padding: 2rem;
   border-radius: 7px;
   position: relative;
+  z-index: 111111111;
 }
 
 .modal-comment > button {
