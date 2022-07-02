@@ -32,7 +32,7 @@ const CreateComment = ({ setShow, setUpdate, setModal, token, id }) => {
       } else {
         setUpdate((prevState) => !prevState);
         setModal('');
-        setShow((prevState) => !prevState);
+        setShow(true);
       }
     } catch (err) {
       setError(err.message);
