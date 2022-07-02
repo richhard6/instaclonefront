@@ -5,11 +5,9 @@ import './styles.css';
 const CreateComment = ({ setShow, setUpdate, setModal, token, id }) => {
   const [comment, setComment] = useState('');
 
-  const ref = useRef();
-
   const [error, setError] = useState('');
 
-  const handleComment = async (e) => {
+  const handleComment = async () => {
     try {
       const response = await fetch(
         `http://localhost:4000/posts/${id}/comment`,
@@ -24,6 +22,10 @@ const CreateComment = ({ setShow, setUpdate, setModal, token, id }) => {
       );
 
       const data = await response.json();
+
+      setTimeout(() => {
+        setError('');
+      }, 2000);
 
       if (data.status === 'error') {
         setError(data.message);
@@ -42,6 +44,7 @@ const CreateComment = ({ setShow, setUpdate, setModal, token, id }) => {
       <textarea
         onChange={(e) => setComment(e.target.value)}
         name="textarea"
+        placeholder="add your comment here..."
         cols="30"
         rows="10"
       ></textarea>

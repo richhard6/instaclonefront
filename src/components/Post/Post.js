@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import { format } from 'date-fns';
 import { useUser } from '../../context/UserContext';
@@ -68,20 +68,22 @@ const Post = ({
             <p onClick={() => setShow((prevState) => !prevState)}>
               {show ? 'Close comments' : 'View all comments'}
             </p>
-            <Button
-              name="Add comment"
-              onClick={() =>
-                setModal(
-                  <CreateComment
-                    setShow={setShow}
-                    setUpdate={setUpdate}
-                    setModal={setModal}
-                    token={token}
-                    id={id}
-                  />
-                )
-              }
-            />
+            {token && (
+              <Button
+                name="Add comment"
+                onClick={() =>
+                  setModal(
+                    <CreateComment
+                      setShow={setShow}
+                      setUpdate={setUpdate}
+                      setModal={setModal}
+                      token={token}
+                      id={id}
+                    />
+                  )
+                }
+              />
+            )}
           </div>
           <div className={`${show ? 'comments-section' : 'hide'}`}>
             {show &&

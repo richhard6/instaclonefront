@@ -2,12 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import Button from '../Button/Button';
 import Post from '../Post/Post';
 import { useUser } from '../../context/UserContext';
+
 import './styles.css';
+import { useModal } from '../../context/ModalContext';
+import CreatePost from '../CreatePost/CreatePost';
 
 const PostsList = () => {
   const [posts, setPosts] = useState(null);
   const [keyword, setKeyword] = useState('');
   const [error, setError] = useState('');
+  const [, setModal] = useModal();
 
   const [update, setUpdate] = useState(false);
 
@@ -68,7 +72,7 @@ const PostsList = () => {
         </div>
         {token && (
           <div>
-            <Button name="+" />
+            <Button onClick={() => setModal(<CreatePost />)} name="+" />
           </div>
         )}
       </div>

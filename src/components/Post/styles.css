@@ -55,10 +55,12 @@
   padding: 0.5rem;
   word-wrap: break-word;
   border-radius: 3px;
+  z-index: 1111;
 }
 
 .comments-section > div {
-  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--background-color);
 }
 
 .comments-section > div > p {

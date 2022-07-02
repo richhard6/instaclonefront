@@ -27,7 +27,7 @@ main {
 } */
 
 .search-container > div > p {
-  color: red;
+  color: #cc0000;
   position: absolute;
   bottom: -50%;
 }
