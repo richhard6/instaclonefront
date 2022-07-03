@@ -1,43 +1,36 @@
 .login-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10rem;
-    background-color: var(--primary-color);
-    border-radius: 8px;
-    color: white;
-    padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  color: white;
+  padding-bottom: 2rem;
 }
 
-.btn {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border: 0;
-    font-size: 1rem;
-    font-weight: 900;
-    border-radius: 8px;
-    background-color: var(--secondary-color);
-    cursor: pointer;
-    color: white;
+.login-container > form > .btn {
+  margin-left: 0;
+  margin-top: 2rem;
 }
 
 .welcome {
-    display: flex;
-    justify-content: center;
-    padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-    margin-top: 2rem;
-    font-size: 1.2rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
 }
 
 input {
-    padding: 0.5rem;
-    color: black;
-    width: 20rem;
+  padding: 0.5rem;
+  color: black;
+  width: 20rem;
 }

@@ -4,14 +4,19 @@ header {
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: white;
+  padding: 2rem;
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
   position: relative;
+}
+
+.log-container > button {
+  margin-top: 0;
 }
 
 .hamburguer-nav {
@@ -43,7 +48,7 @@ h2 {
   transition: all 0.5s ease;
 }
 
-h2:hover{
+h2:hover {
   font-size: 1.7rem;
   padding: 0%;
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useUser } from '../../context/UserContext';
+import Button from '../Button/Button';
 import './styles.css';
 
 const Login = () => {
@@ -49,12 +50,11 @@ const Login = () => {
 
   return (
     <main className="Login">
+      <div className="welcome">
+        <h1>Glad to see you again...</h1>
+      </div>
 
-    <div className='welcome'>
-      <h1>Glad to see you again...</h1>
-    </div>
-
-      <div className='login-container'>
+      <div className="login-container">
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email:</label>
           <input
@@ -63,7 +63,6 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-
           <label htmlFor="pass">Password:</label>
           <input
             type="password"
@@ -71,8 +70,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
-          <button className='btn' disabled={loading}>Log In</button>
+          <Button name="Log in" disabled={loading} />
         </form>
       </div>
       {error && <p className="Error">{error}</p>}
