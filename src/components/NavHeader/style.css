@@ -24,7 +24,7 @@ header {
   justify-content: center;
   background-color: var(--secondary-color);
   width: 100%;
-  z-index: 111;
+  z-index: 2;
 }
 .hamburguer-nav ul {
   text-align: center;

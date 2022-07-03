@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import './style.css';
+import '../../animations/slideIn.css';
 
 const NavHeader = () => {
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
+
+  const [animation, setAnimation] = useState(false);
 
   const { user, setTokenInLocalStorage, setUser } = useUser();
 
@@ -35,17 +38,35 @@ const NavHeader = () => {
           </div>
         )}
         {user && (
-          <p onClick={() => setShow((prevState) => !prevState)}>
+          <div
+            onClick={() => {
+              let timeout;
+              if (show) {
+                setAnimation(true);
+                timeout = setTimeout(() => {
+                  setShow((prevState) => !prevState);
+                }, 500);
+              } else {
+                clearTimeout(timeout);
+                setAnimation(false);
+                setShow((prevState) => !prevState);
+              }
+            }}
+          >
             <div className="hamburguer">
               <span className="bar1"></span>
               <span className="bar2"></span>
               <span className="bar3"></span>
             </div>
-          </p>
+          </div>
         )}
       </header>
       {show && (
-        <div className="hamburguer-nav">
+        <div
+          className={`hamburguer-nav ${
+            animation ? 'slide-out' : 'slide-in-top'
+          }`}
+        >
           <ul>
             <Link to="/" onClick={() => setShow(false)}>
               <li>Feed</li>
