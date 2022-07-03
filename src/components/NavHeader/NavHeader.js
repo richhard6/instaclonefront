@@ -22,6 +22,20 @@ const NavHeader = () => {
     navigate('/');
   };
 
+  const handleNavBar = () => {
+    let timeout;
+    if (show) {
+      setAnimation((prevState) => (prevState = true));
+      timeout = setTimeout(() => {
+        setShow((prevState) => (prevState = false));
+      }, 400);
+    } else {
+      setAnimation((prevState) => (prevState = false));
+      setShow((prevState) => (prevState = true));
+      clearTimeout(timeout);
+    }
+  };
+
   return (
     <div className="container">
       <header>
@@ -38,21 +52,7 @@ const NavHeader = () => {
           </div>
         )}
         {user && (
-          <div
-            onClick={() => {
-              let timeout;
-              if (show) {
-                setAnimation(true);
-                timeout = setTimeout(() => {
-                  setShow((prevState) => !prevState);
-                }, 500);
-              } else {
-                clearTimeout(timeout);
-                setAnimation(false);
-                setShow((prevState) => !prevState);
-              }
-            }}
-          >
+          <div onClick={handleNavBar}>
             <div className="hamburguer">
               <span className="bar1"></span>
               <span className="bar2"></span>
