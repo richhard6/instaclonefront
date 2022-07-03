@@ -5,6 +5,7 @@ const UserContext = createContext(null);
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(null);
+  const [userRefresh, setUserRefresh] = useState(!false);
 
   const setTokenInLocalStorage = (newToken) => {
     if (!newToken) {
@@ -29,9 +30,15 @@ export const UserProvider = ({ children }) => {
     if (token) {
       getUserData();
     }
-  }, [token]);
+  }, [token, userRefresh]);
 
-  const values = { token, setTokenInLocalStorage, user, setUser };
+  const values = {
+    token,
+    setTokenInLocalStorage,
+    user,
+    setUser,
+    setUserRefresh,
+  };
 
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>;
 };

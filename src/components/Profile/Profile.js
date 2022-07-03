@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useModal } from '../../context/ModalContext';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import Post from '../Post/Post';
-
+import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import './styles.css';
 
 const Profile = () => {
   const { userId } = useParams();
+
+  const [, setModal] = useModal();
 
   const [posts, setPosts] = useState();
 
@@ -55,18 +58,31 @@ const Profile = () => {
   return (
     <main>
       <div className="user-data">
-
         <div className="username-container">
           <p>{username}</p>
           {user && user.id === Number(userId) && (
-            <Button name="Change username" />
+            <Button
+              name="Change username"
+              onClick={() =>
+                setModal(
+                  <UpdateProfile type="username" setUpdate={setUpdate} />
+                )
+              }
+            />
           )}
         </div>
 
-          {user && user.id === Number(userId) && (
-          <div className='password-container'>
+        {user && user.id === Number(userId) && (
+          <div className="password-container">
             <p>******</p>
-            <Button name="Change password" />
+            <Button
+              name="Change password"
+              onClick={() =>
+                setModal(
+                  <UpdateProfile type="password" setUpdate={setUpdate} />
+                )
+              }
+            />
           </div>
         )}
       </div>
