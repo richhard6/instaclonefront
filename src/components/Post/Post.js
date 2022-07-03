@@ -56,10 +56,9 @@ const Post = ({
         className="post-image"
       />
 
-    {/* Info del post */}
+      {/* Info del post */}
 
       <div className="post-info">
-
         <div className="like-container">
           <button onClick={token && handleLike}>
             {likedByMe ? '❤️' : '🤍'}
@@ -68,21 +67,23 @@ const Post = ({
         </div>
 
         <div>
-          <div className='user-and-date'>
+          <div className="user-and-date">
             <Link to={`/profile/${userId}`}>
               <h3>@{username}</h3>
             </Link>
-            
+
             <time dateTime={dateTime}>{dateWithHour}</time>
           </div>
 
           <p>{caption}</p>
 
-          <div className=''>
+          <div className="">
             <div>
-
               {comments && (
-                <p onClick={() => setShow((prevState) => !prevState)}>
+                <p
+                  className="show-comments"
+                  onClick={() => setShow((prevState) => !prevState)}
+                >
                   {show ? 'Close comments' : 'View all comments'}
                 </p>
               )}

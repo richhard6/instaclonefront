@@ -1,12 +1,10 @@
 header {
-  height: 10vh;
   background-color: var(--primary-color);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
-  padding: 2rem;
+  padding: 1.2rem;
 }
 
 .container {

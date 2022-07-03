@@ -51,12 +51,6 @@
   display: flex;
   align-items: center;
 }
-.post-info > div:nth-child(2) > time {
-  position: absolute;
-  font-size: 0.8rem;
-  top: 0;
-  right: 0;
-}
 
 .like-container {
   display: flex;
@@ -87,4 +81,14 @@
   color: white;
   display: flex;
   justify-content: space-between;
+}
+
+.user-and-date > time {
+  font-weight: 200;
+  font-size: 0.9rem;
+}
+
+.show-comments {
+  font-weight: 500;
+  font-size: 0.9rem;
 }
