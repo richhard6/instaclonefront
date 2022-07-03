@@ -1,8 +1,13 @@
 :root {
-  --primary-color: #1fab89;
-  --secondary-color: #62d2a2;
-  --background-color: #d7fbe8;
+  --primary-color: #005077;
+  --secondary-color: #1993D0;
+  --background-color: #D0D5DC;
 }
+
+/* colores originales:
+--primary-color: #1fab89;
+--secondary-color: #62d2a2;
+--background-color: #d7fbe8; */
 
 * {
   margin: 0;
