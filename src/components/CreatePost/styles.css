@@ -20,3 +20,7 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+.create-post > .btn {
+  margin-left: 0;
+}

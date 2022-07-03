@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useModal } from '../../context/ModalContext';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
+import './styles.css';
 
 const UpdateProfile = ({ type, setUpdate }) => {
   const formRef = useRef();
@@ -53,7 +54,11 @@ const UpdateProfile = ({ type, setUpdate }) => {
   };
 
   return (
-    <form onSubmit={(e) => handleForm(e)} ref={formRef}>
+    <form
+      onSubmit={(e) => handleForm(e)}
+      ref={formRef}
+      className="update-profile-form"
+    >
       <input type="password" placeholder="enter your password..." />
       <input
         type={`${type === 'username' ? 'text' : 'password'}`}

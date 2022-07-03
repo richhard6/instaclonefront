@@ -41,8 +41,9 @@
   justify-content: space-between;
 }
 
-.post-info button {
+.post-info .btn {
   font-size: 0.8rem;
+  margin-top: 1rem;
 }
 
 .post-info > div:nth-child(2) > :nth-child(4) > p {
@@ -91,4 +92,5 @@
 .show-comments {
   font-weight: 500;
   font-size: 0.9rem;
+  cursor: pointer;
 }

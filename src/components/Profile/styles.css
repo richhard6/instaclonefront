@@ -1,13 +1,29 @@
 .user-data {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 2rem;
-    border-radius: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.username-container, 
+.user-data .btn {
+  margin-top: 1rem;
+  margin-left: 0rem;
+}
+
+.username-container,
 .password-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.username-container > *:not(.btn),
+.password-container > *:not(.btn) {
+  text-align: center;
+  width: 50%;
 }
