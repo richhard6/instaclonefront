@@ -37,7 +37,6 @@
 
 .post-info > div:nth-child(2) > :nth-child(4) {
   font-weight: 650;
-
   display: flex;
   justify-content: space-between;
 }
@@ -82,4 +81,10 @@
 
 .comments-section > div > p {
   font-weight: 250;
+}
+
+.user-and-date {
+  color: white;
+  display: flex;
+  justify-content: space-between;
 }

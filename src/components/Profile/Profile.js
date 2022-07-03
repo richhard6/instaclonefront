@@ -4,6 +4,8 @@ import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import Post from '../Post/Post';
 
+import './styles.css';
+
 const Profile = () => {
   const { userId } = useParams();
 
@@ -53,14 +55,16 @@ const Profile = () => {
   return (
     <main>
       <div className="user-data">
+
         <div className="username-container">
           <p>{username}</p>
           {user && user.id === Number(userId) && (
             <Button name="Change username" />
           )}
         </div>
-        {user && user.id === Number(userId) && (
-          <div>
+
+          {user && user.id === Number(userId) && (
+          <div className='password-container'>
             <p>******</p>
             <Button name="Change password" />
           </div>

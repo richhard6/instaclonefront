@@ -23,7 +23,11 @@ const NavHeader = () => {
     <div className="container">
       <header>
         {user && <h3>@{user.username}</h3>}
-        <h2>Instaclone</h2>
+
+        <Link to="/" className='intaclone-name'>
+          <h2>Instaclone</h2>
+        </Link>
+
         {!user && (
           <div>
             <Button onClick={() => navigate('/login')} name="Log In" />
@@ -31,7 +35,15 @@ const NavHeader = () => {
           </div>
         )}
         {user && (
-          <p onClick={() => setShow((prevState) => !prevState)}>hamburger</p>
+          <p onClick={() => setShow((prevState) => !prevState)}>
+          
+          <div className='hamburguer'>
+            <span className='bar1'></span>
+            <span className='bar2'></span>
+            <span className='bar3'></span>
+          </div>
+          
+          </p>
         )}
       </header>
       {show && (

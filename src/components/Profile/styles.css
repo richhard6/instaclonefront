@@ -1,0 +1,13 @@
+.user-data {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.username-container, 
+.password-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

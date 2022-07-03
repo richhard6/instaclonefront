@@ -55,57 +55,69 @@ const Post = ({
         alt="pic"
         className="post-image"
       />
+
+    {/* Info del post */}
+
       <div className="post-info">
+
         <div className="like-container">
           <button onClick={token && handleLike}>
             {likedByMe ? '❤️' : '🤍'}
           </button>
           <span>{likes}</span>
         </div>
-        <div>
-          <Link to={`/profile/${userId}`}>
-            <h3>@{username}</h3>
-          </Link>
-          <p>{caption}</p>
-          <time dateTime={dateTime}>{dateWithHour}</time>
 
-          <div>
-            {comments && (
-              <p onClick={() => setShow((prevState) => !prevState)}>
-                {show ? 'Close comments' : 'View all comments'}
-              </p>
-            )}
-            {!comments && <p></p>}
-            {token && (
-              <Button
-                name="Add comment"
-                onClick={() =>
-                  setModal(
-                    <CreateComment
-                      setShow={setShow}
-                      setUpdate={setUpdate}
-                      setModal={setModal}
-                      token={token}
-                      id={id}
-                    />
-                  )
-                }
-              />
-            )}
+        <div>
+          <div className='user-and-date'>
+            <Link to={`/profile/${userId}`}>
+              <h3>@{username}</h3>
+            </Link>
+            
+            <time dateTime={dateTime}>{dateWithHour}</time>
           </div>
-          <div className={`${show ? 'comments-section' : 'hide'}`}>
-            {show &&
-              comments &&
-              comments
-                .sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
-                .map(({ comment, id, username }) => {
-                  return (
-                    <div key={id}>
-                      <h4>{username}</h4>
-                      <p> {comment}</p>
-                    </div>
-                  );
-                })}
+
+          <p>{caption}</p>
+
+          <div className=''>
+            <div>
+
+              {comments && (
+                <p onClick={() => setShow((prevState) => !prevState)}>
+                  {show ? 'Close comments' : 'View all comments'}
+                </p>
+              )}
+              {!comments && <p></p>}
+              {token && (
+                <Button
+                  name="Add comment"
+                  onClick={() =>
+                    setModal(
+                      <CreateComment
+                        setShow={setShow}
+                        setUpdate={setUpdate}
+                        setModal={setModal}
+                        token={token}
+                        id={id}
+                      />
+                    )
+                  }
+                />
+              )}
+            </div>
+            <div className={`${show ? 'comments-section' : 'hide'}`}>
+              {show &&
+                comments &&
+                comments
+                  .sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
+                  .map(({ comment, id, username }) => {
+                    return (
+                      <div key={id}>
+                        <h4>{username}</h4>
+                        <p> {comment}</p>
+                      </div>
+                    );
+                  })}
+            </div>
           </div>
         </div>
       </div>

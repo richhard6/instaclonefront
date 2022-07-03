@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useUser } from '../../context/UserContext';
+import './styles.css';
 
 const Login = () => {
   const { setTokenInLocalStorage, token } = useUser();
@@ -48,25 +49,32 @@ const Login = () => {
 
   return (
     <main className="Login">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
 
-        <label htmlFor="pass">Password:</label>
-        <input
-          type="password"
-          name="pass"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    <div className='welcome'>
+      <h1>Glad to see you again...</h1>
+    </div>
 
-        <button disabled={loading}>Log In</button>
-      </form>
+      <div className='login-container'>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <label htmlFor="pass">Password:</label>
+          <input
+            type="password"
+            name="pass"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button className='btn' disabled={loading}>Log In</button>
+        </form>
+      </div>
       {error && <p className="Error">{error}</p>}
     </main>
   );
