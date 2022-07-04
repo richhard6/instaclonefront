@@ -17,7 +17,8 @@ main {
   align-items: center;
   position: relative;
   margin: 2rem 0 2rem;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 2rem 0 2rem;
 }
 .search-container :nth-child(1) {
   display: flex;
@@ -38,5 +39,8 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 0.5rem;
+  }
+  .input-search {
+    width: 100%;
   }
 }

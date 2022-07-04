@@ -57,13 +57,6 @@
   max-width: 100%;
 }
 
-.post-info > div:nth-child(2) > :nth-child(4) > p {
-  cursor: pointer;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-}
-
 .like-container {
   display: flex;
   align-items: center;
@@ -87,7 +80,7 @@
   width: 100%;
   padding: 0.7rem;
   word-wrap: break-word;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   z-index: 11;
   margin-top: 0.5rem;
 }
