@@ -23,7 +23,7 @@
 
 .post-info > div:nth-child(2) {
   position: relative;
-  width: 100%;
+  width: 70%;
 }
 
 .post-info > :nth-child(2) h3 {
@@ -47,6 +47,16 @@
   margin-top: 1rem;
 }
 
+.post-info-inner {
+  margin: 0.5rem 0 0.5rem;
+  width: 30%;
+}
+
+.post-info-inner > p {
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
 .post-info > div:nth-child(2) > :nth-child(4) > p {
   cursor: pointer;
   font-size: 0.8rem;
@@ -57,7 +67,18 @@
 .like-container {
   display: flex;
   align-items: center;
-  margin-right: 0.8rem;
+  padding: 0.5rem;
+  width: 30%;
+}
+
+.like-container > button {
+  background: none;
+  margin-right: 0.5rem;
+  border: none;
+}
+
+.like-container > span {
+  font-weight: 700;
 }
 
 .comments-section {
@@ -68,6 +89,7 @@
   word-wrap: break-word;
   border-radius: 5px;
   z-index: 11;
+  margin-top: 0.5rem;
 }
 
 .comments-section > div {
@@ -80,12 +102,14 @@
 }
 
 .user-and-date {
-  color: white;
-  display: flex;
-  justify-content: space-between;
+  position: relative;
 }
 
 .user-and-date > time {
+  position: absolute;
+
+  top: -18px;
+  right: 0;
   font-weight: 200;
   font-size: 0.9rem;
 }

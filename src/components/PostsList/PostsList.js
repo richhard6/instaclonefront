@@ -6,6 +6,9 @@ import { useUser } from '../../context/UserContext';
 import './styles.css';
 import { useModal } from '../../context/ModalContext';
 import CreatePost from '../CreatePost/CreatePost';
+import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import Skeleton from '@mui/material/Skeleton';
 
 const PostsList = () => {
   const [posts, setPosts] = useState(null);
@@ -67,20 +70,21 @@ const PostsList = () => {
             type="text"
             ref={ref}
           />
-          <Button name="search" onClick={handleSearch} />
+
+          <Button name={<SearchOutlinedIcon />} onClick={handleSearch} />
           {error && <p>{error}</p>}
         </div>
         {token && (
           <div>
             <Button
               onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
-              name="+"
+              name={<AddAPhotoOutlinedIcon />}
             />
           </div>
         )}
       </div>
       <div className="posts-list">
-        {posts &&
+        {posts ? (
           posts.map(
             ({
               caption,
@@ -107,7 +111,15 @@ const PostsList = () => {
                 key={id}
               />
             )
-          )}
+          )
+        ) : (
+          <Skeleton
+            variant="rectangular"
+            width={'100%'}
+            height={360}
+            sx={{ bgcolor: 'blue.600' }}
+          />
+        )}
       </div>
     </main>
   );

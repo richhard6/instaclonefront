@@ -1,7 +1,7 @@
 .login-container {
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: 3rem;
   background-color: var(--primary-color);
   border-radius: 8px;
   color: white;

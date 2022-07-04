@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
+import Typography from '@mui/material/Typography';
 import Button from '../Button/Button';
 import './style.css';
 import '../../animations/slideIn.css';
@@ -39,9 +40,8 @@ const NavHeader = () => {
   return (
     <div className="container">
       <header>
-        {user && <h3>@{user.username}</h3>}
-
-        <Link to="/" className="intaclone-name">
+        {user && <h3 className={user ? 'logged' : ''}>@{user.username}</h3>}
+        <Link to="/" className={`${user ? 'logged' : ''}`}>
           <h2>Instaclone</h2>
         </Link>
 
@@ -52,7 +52,7 @@ const NavHeader = () => {
           </div>
         )}
         {user && (
-          <div onClick={handleNavBar}>
+          <div onClick={handleNavBar} className={`${user ? 'logged' : ''}`}>
             <div className="hamburguer">
               <span className="bar1"></span>
               <span className="bar2"></span>

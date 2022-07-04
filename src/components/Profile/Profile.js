@@ -5,6 +5,7 @@ import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import Post from '../Post/Post';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
+import EditIcon from '@mui/icons-material/Edit';
 import './styles.css';
 
 const Profile = () => {
@@ -62,7 +63,7 @@ const Profile = () => {
           <p>{username}</p>
           {user && user.id === Number(userId) && (
             <Button
-              name="Change username"
+              name={<EditIcon />}
               onClick={() =>
                 setModal(
                   <UpdateProfile type="username" setUpdate={setUpdate} />
@@ -76,7 +77,7 @@ const Profile = () => {
           <div className="password-container">
             <p>******</p>
             <Button
-              name="Change password"
+              name={<EditIcon />}
               onClick={() =>
                 setModal(
                   <UpdateProfile type="password" setUpdate={setUpdate} />

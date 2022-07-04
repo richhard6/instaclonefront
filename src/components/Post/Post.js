@@ -7,6 +7,8 @@ import Button from '../Button/Button';
 import { useModal } from '../../context/ModalContext';
 import CreateComment from '../CreateComment/CreateComment';
 import { Link } from 'react-router-dom';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const Post = ({
   username,
@@ -61,12 +63,16 @@ const Post = ({
       <div className="post-info">
         <div className="like-container">
           <button onClick={token && handleLike}>
-            {likedByMe ? '❤️' : '🤍'}
+            {likedByMe ? (
+              <FavoriteIcon sx={{ color: 'red' }} />
+            ) : (
+              <FavoriteBorderIcon />
+            )}
           </button>
           <span>{likes}</span>
         </div>
 
-        <div>
+        <div className="post-info-inner">
           <div className="user-and-date">
             <Link to={`/profile/${userId}`}>
               <h3>@{username}</h3>

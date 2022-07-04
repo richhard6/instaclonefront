@@ -16,8 +16,11 @@ main {
   display: flex;
   align-items: center;
   position: relative;
-  margin-bottom: 2rem;
+  margin: 2rem 0 2rem;
   justify-content: space-around;
+}
+.search-container :nth-child(1) {
+  display: flex;
 }
 
 .search-container > div > p {
