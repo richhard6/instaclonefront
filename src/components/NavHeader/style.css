@@ -5,6 +5,11 @@ header {
   justify-content: space-between;
   color: white;
   padding: 1.2rem;
+  text-align: center;
+}
+
+header > * {
+  width: 33%;
 }
 
 .container {
@@ -22,8 +27,9 @@ header {
   position: absolute;
   align-items: center;
   justify-content: center;
+  right: 0;
   background-color: var(--secondary-color);
-  width: 100%;
+  width: 40%;
   z-index: 11111;
   padding: 1rem;
   border-radius: 0 0 8px 8px;
@@ -40,7 +46,7 @@ header {
   border-bottom: 0.5px solid var(--background-color);
   padding: 0.2rem;
   color: white;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   padding: 0.5rem;
 }
@@ -59,6 +65,7 @@ h2:hover {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  align-items: center;
 }
 
 .bar1,
