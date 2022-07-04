@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import Post from '../Post/Post';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import EditIcon from '@mui/icons-material/Edit';
+
 import './styles.css';
 
 const Profile = () => {

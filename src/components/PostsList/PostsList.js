@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Button from '../Button/Button';
 import Post from '../Post/Post';
 import { useUser } from '../../context/UserContext';
+import { Tooltip, IconButton } from '@mui/material/';
 
 import './styles.css';
 import { useModal } from '../../context/ModalContext';
@@ -75,12 +76,14 @@ const PostsList = () => {
           {error && <p>{error}</p>}
         </div>
         {token && (
-          <div>
-            <Button
-              onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
-              name={<AddAPhotoOutlinedIcon />}
-            />
-          </div>
+          <Tooltip title="Create new post">
+            <IconButton>
+              <Button
+                onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
+                name={<AddAPhotoOutlinedIcon />}
+              />
+            </IconButton>
+          </Tooltip>
         )}
       </div>
       <div className="posts-list">
