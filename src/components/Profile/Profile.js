@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
 import { useUser } from '../../context/UserContext';
@@ -7,6 +7,7 @@ import Post from '../Post/Post';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import EditIcon from '@mui/icons-material/Edit';
 
+import useFetch from '../../hooks/useFetch';
 import './styles.css';
 
 const Profile = () => {
@@ -14,48 +15,15 @@ const Profile = () => {
 
   const [, setModal] = useModal();
 
-  const [posts, setPosts] = useState();
-
   const [username, setUsername] = useState();
 
   const [update, setUpdate] = useState(false);
 
-  const [error, setError] = useState();
+  const { user } = useUser();
 
-  const { token, user } = useUser();
+  const [posts, loading, error] = useFetch({ userId, update, setUsername });
 
   console.log(user);
-
-  useEffect(() => {
-    const params = token
-      ? {
-          headers: {
-            Authorization: token,
-          },
-        }
-      : {};
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:4000/users/${userId}/`,
-          params
-        );
-
-        const data = await response.json();
-
-        if (data.status === 'ok') {
-          setPosts(data.data.posts);
-          setUsername(data.data.user.username);
-        } else {
-          setError(data.message);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchPosts();
-  }, [token, userId, update]);
 
   return (
     <main>

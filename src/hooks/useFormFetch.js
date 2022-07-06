@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
+import { baseURL } from '../utils/constants';
 
 const useFormFetch = ({
   bodyToUse,
@@ -24,7 +25,7 @@ const useFormFetch = ({
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:4000/${route}`, {
+      const response = await fetch(`${baseURL}/${route}`, {
         method: methodToUse,
         headers: headerToUse,
         body: bodyToUse ? JSON.stringify(bodyToUse) : formParsed,

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import './styles.css';
 import { format } from 'date-fns';
 import { useUser } from '../../context/UserContext';
@@ -9,6 +8,8 @@ import CreateComment from '../CreateComment/CreateComment';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { baseURL } from '../../utils/constants';
+import { handleLike } from '../helpers/handleLike';
 
 const Post = ({
   username,
@@ -31,42 +32,25 @@ const Post = ({
   const dateTime = format(new Date(createdAt), 'yyyy-MM-dd');
   const dateWithHour = format(new Date(createdAt), 'hh:mm - dd/MM/yyyy');
 
-  const handleLike = async () => {
-    try {
-      const response = await fetch(`http://localhost:4000/posts/${id}/like`, {
-        method: 'POST',
-        headers: {
-          Authorization: token,
-        },
-      });
-
-      const data = await response.json();
-
-      if (data.status === 'ok') {
-        setUpdate((prev) => !prev);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return (
     <article className="post-container">
-      <img
-        src={`http://localhost:4000/${picture}`}
-        alt="pic"
-        className="post-image"
-      />
+      <img src={`${baseURL}/${picture}`} alt="pic" className="post-image" />
 
       {/* Info del post */}
 
       <div className="post-info">
         <div className="like-container">
-          <button onClick={token && handleLike}>
+          <button
+            onClick={token ? () => handleLike(token, id, setUpdate) : null}
+          >
             {likedByMe ? (
-              <FavoriteIcon sx={{ color: 'red' }} />
+              <FavoriteIcon
+                sx={{ color: 'red', cursor: token ? 'pointer' : 'default' }}
+              />
             ) : (
-              <FavoriteBorderIcon />
+              <FavoriteBorderIcon
+                sx={{ cursor: token ? 'pointer' : 'default' }}
+              />
             )}
           </button>
           <span>{likes}</span>

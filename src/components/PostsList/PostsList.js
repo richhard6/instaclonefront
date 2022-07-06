@@ -10,20 +10,23 @@ import CreatePost from '../CreatePost/CreatePost';
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Skeleton from '@mui/material/Skeleton';
+import useFetch from '../../hooks/useFetch';
 
 const PostsList = () => {
-  const [posts, setPosts] = useState(null);
+  /*   const [posts, setPosts] = useState(null); */
   const [keyword, setKeyword] = useState('');
-  const [error, setError] = useState('');
+  /*   const [error, setError] = useState(''); */
   const [, setModal] = useModal();
 
   const [update, setUpdate] = useState(false);
+
+  const [posts, loading, error] = useFetch({ keyword, update });
 
   const ref = useRef();
 
   const { token } = useUser();
 
-  useEffect(() => {
+  /* useEffect(() => {
     const params = token
       ? {
           headers: {
@@ -54,7 +57,7 @@ const PostsList = () => {
     };
 
     fetchPosts();
-  }, [keyword, update, token]);
+  }, [keyword, update, token]); */
 
   const handleSearch = () => {
     setKeyword(ref.current.value);
