@@ -16,8 +16,12 @@ main {
   display: flex;
   align-items: center;
   position: relative;
-  margin-bottom: 2rem;
-  justify-content: space-around;
+  margin: 2rem 0 2rem;
+  justify-content: space-between;
+  padding: 0 2rem 0 2rem;
+}
+.search-container :nth-child(1) {
+  display: flex;
 }
 
 .search-container > div > p {
@@ -35,5 +39,8 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 0.5rem;
+  }
+  .input-search {
+    width: 100%;
   }
 }

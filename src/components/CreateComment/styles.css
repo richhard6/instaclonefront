@@ -12,6 +12,7 @@
 .modal-comment > button {
   width: 40%;
   margin-top: 1rem;
+  margin-left: 0;
 }
 
 .modal-comment > textarea {
