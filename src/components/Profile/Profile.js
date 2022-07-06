@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
 import { useUser } from '../../context/UserContext';
@@ -9,6 +9,8 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import useFetch from '../../hooks/useFetch';
 import './styles.css';
+
+import LoadingCircle from '../LoadingCircle/LoadingCircle';
 
 const Profile = () => {
   const { userId } = useParams();
@@ -24,6 +26,8 @@ const Profile = () => {
   const [posts, loading, error] = useFetch({ userId, update, setUsername });
 
   console.log(user);
+
+  if (loading && !posts) return <LoadingCircle />;
 
   return (
     <main>
@@ -56,6 +60,7 @@ const Profile = () => {
           </div>
         )}
       </div>
+
       <div className="posts-list">
         {posts &&
           posts.map(

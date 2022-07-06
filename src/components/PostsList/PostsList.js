@@ -11,11 +11,11 @@ import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Skeleton from '@mui/material/Skeleton';
 import useFetch from '../../hooks/useFetch';
+import LoadingCircle from '../LoadingCircle/LoadingCircle';
 
 const PostsList = () => {
-  /*   const [posts, setPosts] = useState(null); */
   const [keyword, setKeyword] = useState('');
-  /*   const [error, setError] = useState(''); */
+
   const [, setModal] = useModal();
 
   const [update, setUpdate] = useState(false);
@@ -30,6 +30,8 @@ const PostsList = () => {
     setKeyword(ref.current.value);
     ref.current.value = '';
   };
+
+  if (loading && !posts) return <LoadingCircle />;
 
   return (
     <main>

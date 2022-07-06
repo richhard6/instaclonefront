@@ -6,7 +6,7 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
   const { token } = useUser();
 
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const [posts, setPosts] = useState(null);
 
