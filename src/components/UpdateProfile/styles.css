@@ -1,10 +1,11 @@
 .update-profile-form > .btn {
   margin-left: 0;
   margin-top: 2rem;
-
+  width: 30%;
+  align-self: center;
 }
 
-.update-profile-form > #second-input {
+.update-profile-form > .second-input {
   margin-top: 2rem;
 }
 
@@ -13,7 +14,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   background-color: var(--primary-color);
   width: 20rem;
   height: 20rem;
@@ -24,7 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   margin-top: 1rem;
   color: yellow;
   width: 80%;

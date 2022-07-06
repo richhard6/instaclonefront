@@ -1,66 +1,29 @@
 import React, { useRef, useState } from 'react';
 import { useModal } from '../../context/ModalContext';
-import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
-
 import './styles.css';
-import '../../animations/slideIn.css';
+import useFormFetch from '../../hooks/useFormFetch';
 
 const CreatePost = ({ setUpdate }) => {
   const ref = useRef();
 
-  const [loading, setLoading] = useState(false);
-
   const [, setModal] = useModal();
 
-  const [success, setSuccess] = useState(false);
-
-  const [error, setError] = useState('');
-
-  const { token } = useUser();
-
-  const [animation, setAnimation] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setLoading(true);
-
-    try {
-      const formData = new FormData(ref.current);
-
-      const response = await fetch('http://localhost:4000/posts/newPost', {
-        method: 'POST',
-        headers: {
-          Authorization: token,
-        },
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (data.status === 'error') {
-        setError(data.message);
-      } else {
-        setSuccess(true);
-        setUpdate((prevState) => !prevState);
-        setModal(null);
-      }
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [onSubmit, loading, success, error] = useFormFetch({
+    methodToUse: 'POST',
+    route: `posts/newPost`,
+    setUpdate,
+    setModal,
+    formRef: ref,
+  });
 
   return (
-    <main className='create-post-container'>
+    <main className="create-post-container">
       <form
         ref={ref}
         className="create-post"
         id="postCreate"
-        onSubmit={(e) => handleSubmit(e)}
+        onSubmit={(e) => onSubmit(e)}
       >
         <input type="file" id="image" name="image" />
         <textarea

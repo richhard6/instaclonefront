@@ -1,68 +1,39 @@
 import React, { useState, useRef } from 'react';
 import { useModal } from '../../context/ModalContext';
-import { useUser } from '../../context/UserContext';
+import useFormFetch from '../../hooks/useFormFetch';
 import Button from '../Button/Button';
 import './styles.css';
 
 const UpdateProfile = ({ type, setUpdate }) => {
   const formRef = useRef();
 
-  const { token, setUserRefresh } = useUser();
-
-  const [loading, setLoading] = useState(false);
-
-  const [error, setError] = useState(false);
-
   const [, setModal] = useModal();
 
-  const handleForm = async (e) => {
-    e.preventDefault();
-    const password = { password: formRef.current[0].value };
-
-    const dataToChange =
-      type === 'username'
-        ? { username: formRef.current[1].value }
-        : { newPassword: formRef.current[1].value };
-
-    console.log({ ...password, ...dataToChange });
-
-    try {
-      const response = await fetch('http://localhost:4000/users/me', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: token,
-        },
-        body: JSON.stringify({ ...password, ...dataToChange }),
-      });
-
-      const data = await response.json();
-
-      if (data.status === 'error') {
-        setError(data.message);
-      } else {
-        setUserRefresh((prevState) => !prevState);
-        setUpdate((prevState) => !prevState);
-        setModal(null);
-      }
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [onSubmit, loading, success, error] = useFormFetch({
+    methodToUse: 'PUT',
+    route: `users/me`,
+    setUpdate,
+    setModal,
+    formRef: formRef,
+  });
 
   return (
-    <div className='update-container'>
+    <div className="update-container">
       <form
-        onSubmit={(e) => handleForm(e)}
+        onSubmit={(e) => onSubmit(e)}
         ref={formRef}
         className="update-profile-form"
       >
-        <input type="password" placeholder="enter your password..." />
         <input
-          id='second-input' 
+          type="password"
+          placeholder="enter your password..."
+          id="password"
+          name="password"
+        />
+        <input
+          className="second-input"
+          id={`${type === 'username' ? 'username' : 'newPassword'}`}
+          name={`${type === 'username' ? 'username' : 'newPassword'}`}
           type={`${type === 'username' ? 'text' : 'password'}`}
           placeholder={`${
             type === 'username'
@@ -70,13 +41,10 @@ const UpdateProfile = ({ type, setUpdate }) => {
               : 'enter your new password'
           }`}
         />
-        <Button name="Save" />
+        <Button name="Save" disabled={loading} />
       </form>
 
-      <div className='error-container'>
-        {error && <p>{error}</p>}
-      </div>
-
+      <div className="error-container">{error && <p>{error}</p>}</div>
     </div>
   );
 };

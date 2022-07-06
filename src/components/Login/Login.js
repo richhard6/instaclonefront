@@ -4,47 +4,18 @@ import { Navigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
 import './styles.css';
-
+import useFormFetch from '../../hooks/useFormFetch';
 const Login = () => {
-  const { setTokenInLocalStorage, token } = useUser();
+  const { token } = useUser();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setError(null);
-    setLoading(true);
-
-    try {
-      const res = await fetch('http://localhost:4000/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (data.status === 'error') {
-        setError(data.message);
-      } else {
-        setTokenInLocalStorage(data.data.token);
-      }
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [onSubmit, loading, , error] = useFormFetch({
+    bodyToUse: { email, password },
+    methodToUse: 'POST',
+    route: 'users/login',
+  });
 
   if (token) return <Navigate to="/" />;
 
@@ -55,7 +26,7 @@ const Login = () => {
       </div>
 
       <div className="login-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <label htmlFor="email">Email:</label>
           <input
             type="email"

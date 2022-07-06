@@ -1,56 +1,33 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
+import useFormFetch from '../../hooks/useFormFetch';
 import Button from '../Button/Button';
 import './styles.css';
 
-const CreateComment = ({ setShow, setUpdate, setModal, token, id }) => {
+const CreateComment = ({ setShow, setUpdate, setModal, id }) => {
   const [comment, setComment] = useState('');
 
-  const [error, setError] = useState('');
-
-  const handleComment = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:4000/posts/${id}/comment`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: token,
-          },
-          body: JSON.stringify({ comment }),
-        }
-      );
-
-      const data = await response.json();
-
-      setTimeout(() => {
-        setError('');
-      }, 2000);
-
-      if (data.status === 'error') {
-        setError(data.message);
-      } else {
-        setUpdate((prevState) => !prevState);
-        setModal('');
-        setShow(true);
-      }
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+  const [onSubmit, loading, success, error] = useFormFetch({
+    bodyToUse: { comment },
+    methodToUse: 'POST',
+    route: `posts/${id}/comment`,
+    setUpdate,
+    setModal,
+    setShow,
+  });
 
   return (
-    <div className="modal-comment">
+    <form className="modal-comment" onSubmit={(e) => onSubmit(e)}>
       <textarea
         onChange={(e) => setComment(e.target.value)}
         name="textarea"
+        value={comment}
         placeholder="add your comment here..."
         cols="30"
         rows="10"
       ></textarea>
-      <Button onClick={handleComment} name="Send" />
+      <Button name="Send" disabled={loading} />
       {error && <p>{error}</p>}
-    </div>
+    </form>
   );
 };
 
