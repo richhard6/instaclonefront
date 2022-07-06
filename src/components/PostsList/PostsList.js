@@ -26,39 +26,6 @@ const PostsList = () => {
 
   const { token } = useUser();
 
-  /* useEffect(() => {
-    const params = token
-      ? {
-          headers: {
-            Authorization: token,
-          },
-        }
-      : {};
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:4000/posts?query=${keyword}`,
-          params
-        );
-
-        const data = await response.json();
-        if (data.status === 'error') {
-          setError(data.message);
-          setTimeout(() => {
-            setError('');
-          }, 2000);
-        } else {
-          setPosts(data.data);
-          console.log(data.data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchPosts();
-  }, [keyword, update, token]); */
-
   const handleSearch = () => {
     setKeyword(ref.current.value);
     ref.current.value = '';

@@ -1,6 +1,8 @@
+import { baseURL } from '../../utils/constants';
+
 export const handleLike = async (token, postId, setUpdate) => {
   try {
-    const response = await fetch(`http://localhost:4000/posts/${postId}/like`, {
+    const response = await fetch(`${baseURL}/posts/${postId}/like`, {
       method: 'POST',
       headers: {
         Authorization: token,

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { baseURL } from '../utils/constants';
 
 const UserContext = createContext(null);
 
@@ -19,7 +20,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const response = await fetch('http://localhost:4000/users/me/profile', {
+      const response = await fetch(`${baseURL}/users/me/profile`, {
         headers: {
           Authorization: token,
         },
