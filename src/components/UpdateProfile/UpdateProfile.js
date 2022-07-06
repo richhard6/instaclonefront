@@ -54,23 +54,30 @@ const UpdateProfile = ({ type, setUpdate }) => {
   };
 
   return (
-    <form
-      onSubmit={(e) => handleForm(e)}
-      ref={formRef}
-      className="update-profile-form"
-    >
-      <input type="password" placeholder="enter your password..." />
-      <input
-        type={`${type === 'username' ? 'text' : 'password'}`}
-        placeholder={`${
-          type === 'username'
-            ? 'enter your new username'
-            : 'enter your new password'
-        }`}
-      />
-      <Button name="Save" />
-      {error && <p>{error}</p>}
-    </form>
+    <div className='update-container'>
+      <form
+        onSubmit={(e) => handleForm(e)}
+        ref={formRef}
+        className="update-profile-form"
+      >
+        <input type="password" placeholder="enter your password..." />
+        <input
+          id='second-input' 
+          type={`${type === 'username' ? 'text' : 'password'}`}
+          placeholder={`${
+            type === 'username'
+              ? 'enter your new username'
+              : 'enter your new password'
+          }`}
+        />
+        <Button name="Save" />
+      </form>
+
+      <div className='error-container'>
+        {error && <p>{error}</p>}
+      </div>
+
+    </div>
   );
 };
 

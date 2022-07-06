@@ -2,7 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useModal } from '../../context/ModalContext';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
+
 import './styles.css';
+import '../../animations/slideIn.css';
 
 const CreatePost = ({ setUpdate }) => {
   const ref = useRef();
@@ -16,6 +18,8 @@ const CreatePost = ({ setUpdate }) => {
   const [error, setError] = useState('');
 
   const { token } = useUser();
+
+  const [animation, setAnimation] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +55,7 @@ const CreatePost = ({ setUpdate }) => {
   };
 
   return (
-    <main className="create-post-container">
+    <main className='create-post-container'>
       <form
         ref={ref}
         className="create-post"

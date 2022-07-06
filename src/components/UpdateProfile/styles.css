@@ -1,3 +1,31 @@
 .update-profile-form > .btn {
   margin-left: 0;
+  margin-top: 2rem;
+
+}
+
+.update-profile-form > #second-input {
+  margin-top: 2rem;
+}
+
+.update-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: var(--primary-color);
+  width: 20rem;
+  height: 20rem;
+  border-radius: 8px;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin-top: 1rem;
+  color: yellow;
+  width: 80%;
 }
