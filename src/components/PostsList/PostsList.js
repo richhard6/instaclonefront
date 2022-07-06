@@ -33,6 +33,7 @@ const PostsList = () => {
 
   if (loading && !posts) return <LoadingCircle />;
 
+  //añadir algo cuando no hay posts... un aviso.
   return (
     <main>
       <div className="search-container">
@@ -48,14 +49,10 @@ const PostsList = () => {
           {error && <p>{error}</p>}
         </div>
         {token && (
-          <Tooltip title="Create new post">
-            <IconButton>
-              <Button
-                onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
-                name={<AddAPhotoOutlinedIcon />}
-              />
-            </IconButton>
-          </Tooltip>
+          <Button
+            onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
+            name={<AddAPhotoOutlinedIcon />}
+          />
         )}
       </div>
       <div className="posts-list">

@@ -29,6 +29,8 @@ const Profile = () => {
 
   if (loading && !posts) return <LoadingCircle />;
 
+  //acentuar mas el nombre del usuario
+
   return (
     <main>
       <div className="user-data">

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { baseURL } from '../../utils/constants';
-import { handleLike } from '../helpers/handleLike';
+import { handleLike } from '../../helpers/handleLike';
 
 const Post = ({
   username,

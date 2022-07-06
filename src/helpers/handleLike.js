@@ -1,4 +1,4 @@
-import { baseURL } from '../../utils/constants';
+import { baseURL } from '../utils/constants';
 
 export const handleLike = async (token, postId, setUpdate) => {
   try {
