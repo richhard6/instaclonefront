@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import Typography from '@mui/material/Typography';
 import Button from '../Button/Button';
 import './style.css';
 import '../../animations/slideIn.css';
