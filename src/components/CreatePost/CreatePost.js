@@ -35,7 +35,6 @@ const CreatePost = ({ setUpdate }) => {
         ></textarea>
         <Button name="Post" disabled={loading} />
       </form>
-      {error && <p>{error}</p>}
     </main>
   );
 };

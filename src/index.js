@@ -8,18 +8,22 @@ import { UserProvider } from './context/UserContext';
 
 import { ModalProvider } from './context/ModalContext';
 
+import { ToastProvider } from './context/ToastContext';
+
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ModalProvider>
-      <UserProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </UserProvider>
-    </ModalProvider>
+    <ToastProvider>
+      <ModalProvider>
+        <UserProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </UserProvider>
+      </ModalProvider>
+    </ToastProvider>
   </React.StrictMode>
 );
 

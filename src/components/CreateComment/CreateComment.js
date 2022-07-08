@@ -26,7 +26,6 @@ const CreateComment = ({ setShow, setUpdate, setModal, id }) => {
         rows="10"
       ></textarea>
       <Button name="Send" disabled={loading} />
-      {error && <p>{error}</p>}
     </form>
   );
 };

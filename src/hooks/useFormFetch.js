@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useToast } from '../context/ToastContext';
 import { useUser } from '../context/UserContext';
 import { baseURL } from '../utils/constants';
 
@@ -12,6 +13,9 @@ const useFormFetch = ({
   formRef,
 }) => {
   const { setTokenInLocalStorage, token, setUserRefresh } = useUser();
+
+  const { handleToast } = useToast();
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -35,6 +39,8 @@ const useFormFetch = ({
 
       if (data.status === 'error') {
         setError(data.message);
+
+        handleToast('error', data.message);
       } else {
         if (route === 'users/login') setTokenInLocalStorage(data.data.token);
         if (
@@ -43,7 +49,11 @@ const useFormFetch = ({
           route === 'users/me'
         ) {
           if (route.includes('comment')) setShow(true);
-          if (route === 'users/me') setUserRefresh((prevState) => !prevState);
+          if (route === 'users/me' || 'posts/newPost') {
+            handleToast('success', data.message);
+
+            if (route === 'users/me') setUserRefresh((prevState) => !prevState);
+          }
           setUpdate((prevState) => !prevState);
           setModal('');
         }

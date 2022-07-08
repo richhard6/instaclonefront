@@ -43,8 +43,6 @@ const UpdateProfile = ({ type, setUpdate }) => {
         />
         <Button name="Save" disabled={loading} />
       </form>
-
-      <div className="error-container">{error && <p>{error}</p>}</div>
     </div>
   );
 };

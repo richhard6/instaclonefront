@@ -7,14 +7,18 @@ import PostsList from './components/PostsList/PostsList';
 import Modal from './components/Modal/Modal';
 import { useModal } from './context/ModalContext';
 import Profile from './components/Profile/Profile';
+import Toast from './components/Toast/Toast';
+import { useToast } from './context/ToastContext';
 
 function App() {
   const [modal] = useModal();
+
+  const { toast } = useToast();
   return (
     <>
       <NavHeader />
       {modal && <Modal>{modal}</Modal>}
-
+      <Toast />
       <Routes>
         <Route path="/" element={<PostsList />} />
         <Route path="/register" element={<Register />} />
