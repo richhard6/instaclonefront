@@ -25,11 +25,7 @@ const Profile = () => {
 
   const [posts, loading, error] = useFetch({ userId, update, setUsername });
 
-  console.log(user);
-
   if (loading && !posts) return <LoadingCircle />;
-
-  //acentuar mas el nombre del usuario
 
   return (
     <main>

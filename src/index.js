@@ -15,15 +15,15 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ToastProvider>
-      <ModalProvider>
-        <UserProvider>
+    <ModalProvider>
+      <UserProvider>
+        <ToastProvider>
           <BrowserRouter>
             <App />
           </BrowserRouter>
-        </UserProvider>
-      </ModalProvider>
-    </ToastProvider>
+        </ToastProvider>
+      </UserProvider>
+    </ModalProvider>
   </React.StrictMode>
 );
 

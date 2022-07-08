@@ -7,6 +7,10 @@ import useFormFetch from '../../hooks/useFormFetch';
 const CreatePost = ({ setUpdate }) => {
   const ref = useRef();
 
+  const inputRef = useRef();
+
+  const [image, setImage] = useState('');
+
   const [, setModal] = useModal();
 
   const [onSubmit, loading, success, error] = useFormFetch({
@@ -17,6 +21,15 @@ const CreatePost = ({ setUpdate }) => {
     formRef: ref,
   });
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    inputRef.current.click();
+  };
+
+  const handleImage = (e) => {
+    setImage(URL.createObjectURL(e.target.files[0]));
+  };
+
   return (
     <main className="create-post-container">
       <form
@@ -25,10 +38,22 @@ const CreatePost = ({ setUpdate }) => {
         id="postCreate"
         onSubmit={(e) => onSubmit(e)}
       >
-        <input type="file" id="image" name="image" />
+        <Button
+          name={image ? 'Select another' : 'Select image'}
+          onClick={(e) => handleClick(e)}
+        />
+        <input
+          type="file"
+          id="image"
+          name="image"
+          onChange={(e) => handleImage(e)}
+          ref={inputRef}
+          style={{ display: 'none' }}
+        />
+        {image && <img className="imageToUpload" src={image} alt="to upload" />}
         <textarea
           cols="30"
-          rows="10"
+          rows="5"
           id="caption"
           name="caption"
           placeholder="Write your caption"

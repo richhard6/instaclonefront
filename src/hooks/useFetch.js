@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { baseURL } from '../utils/constants';
 
@@ -43,8 +43,6 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
           } else {
             setPosts(data.data);
           }
-
-          console.log(data.data);
         }
       } catch (error) {
         console.error(error);

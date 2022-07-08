@@ -24,6 +24,11 @@
   align-items: center;
 }
 
+.username-container > p {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
 .username-container > *:not(.btn),
 .password-container > *:not(.btn) {
   text-align: center;
