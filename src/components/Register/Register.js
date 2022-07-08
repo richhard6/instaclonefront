@@ -64,7 +64,6 @@ const Register = () => {
           </button>
         </form>
       </div>
-      {error && <p className="Error">{error}</p>}
     </main>
   );
 };

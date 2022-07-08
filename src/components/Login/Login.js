@@ -20,7 +20,7 @@ const Login = () => {
   if (token) return <Navigate to="/" />;
 
   return (
-    <main className="Login">
+    <main>
       <div className="welcome">
         <h1>Glad to see you again...</h1>
       </div>
@@ -44,7 +44,7 @@ const Login = () => {
           <Button name="Log in" disabled={loading} />
         </form>
       </div>
-      {error && <p className="Error">{error}</p>}
+      {/*      {error && <p className="Error">{error}</p>} */}
     </main>
   );
 };

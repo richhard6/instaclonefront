@@ -44,8 +44,8 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
             setPosts(data.data);
           }
         }
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading((prevState) => (prevState = false));
       }

@@ -1,11 +1,12 @@
 .register-container {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
   background-color: var(--primary-color);
   border-radius: 8px;
   color: white;
   padding-bottom: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .register-container > form > .btn {
@@ -13,8 +14,17 @@
   margin-top: 2rem;
 }
 
-input {
-  max-width: 15rem;
-  padding: 0.5rem;
-  color: black;
+.register-container > form > input {
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  border: none;
+}
+
+.register-container > form {
+  width: min(250px, 100%);
+}
+
+.welcome {
+  color: var(--primary-color);
 }

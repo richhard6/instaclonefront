@@ -1,11 +1,19 @@
 .login-container {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
   background-color: var(--primary-color);
   border-radius: 8px;
   color: white;
   padding-bottom: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.login-container > form > input {
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  border: none;
 }
 
 .login-container > form > .btn {
@@ -13,10 +21,15 @@
   margin-top: 2rem;
 }
 
+.login-container > form {
+  width: min(250px, 100%);
+}
+
 .welcome {
   display: flex;
   justify-content: center;
   padding-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 form {
@@ -27,10 +40,4 @@ form {
 label {
   margin-top: 2rem;
   font-size: 1.2rem;
-}
-
-input {
-  padding: 0.5rem;
-  color: black;
-  width: 20rem;
 }

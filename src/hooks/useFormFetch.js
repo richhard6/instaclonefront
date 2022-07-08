@@ -61,7 +61,6 @@ const useFormFetch = ({
         setSuccess(true);
       }
     } catch (err) {
-      console.error(err);
       setError(err.message);
     } finally {
       setLoading(false);
