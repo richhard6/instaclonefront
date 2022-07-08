@@ -49,9 +49,9 @@ const useFormFetch = ({
           route === 'users/me'
         ) {
           if (route.includes('comment')) setShow(true);
-          if (route === 'users/me' || 'posts/newPost') {
+          if (route === 'users/me' || route === 'posts/newPost') {
             handleToast('success', data.message);
-
+            console.log(route === 'users/me' || route === 'posts/newPost');
             if (route === 'users/me') setUserRefresh((prevState) => !prevState);
           }
           setUpdate((prevState) => !prevState);

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useToast } from '../context/ToastContext';
 import { useUser } from '../context/UserContext';
 import { baseURL } from '../utils/constants';
 
 const useFetch = ({ keyword, update, userId, setUsername }) => {
   const { token } = useUser();
+  const { handleToast } = useToast();
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -32,10 +34,7 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
         const data = await response.json();
 
         if (data.status === 'error') {
-          setError(data.message);
-          setTimeout(() => {
-            setError('');
-          }, 2000);
+          handleToast('error', data.message);
         } else {
           if (userId) {
             setPosts(data.data.posts);
