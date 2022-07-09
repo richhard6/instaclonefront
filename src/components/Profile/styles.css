@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 65%;
+  width: min(100%, 500px);
   margin: 0 auto;
 }
 
