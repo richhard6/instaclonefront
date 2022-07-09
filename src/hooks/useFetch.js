@@ -33,7 +33,7 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
 
         const data = await response.json();
 
-        if (data.status === 'error') {
+        if (data.status === 'error' && keyword) {
           handleToast('error', data.message);
         } else {
           if (userId) {
@@ -51,6 +51,7 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
     };
 
     fetchPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword, update, token, setUsername, userId]);
 
   return [posts, loading, error];

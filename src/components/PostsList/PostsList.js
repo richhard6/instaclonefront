@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import Button from '../Button/Button';
 import Post from '../Post/Post';
 import { useUser } from '../../context/UserContext';
-import { Tooltip, IconButton } from '@mui/material/';
 
 import './styles.css';
 import { useModal } from '../../context/ModalContext';
 import CreatePost from '../CreatePost/CreatePost';
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import Skeleton from '@mui/material/Skeleton';
+
 import useFetch from '../../hooks/useFetch';
 import LoadingCircle from '../LoadingCircle/LoadingCircle';
 
@@ -33,21 +32,21 @@ const PostsList = () => {
 
   if (loading && !posts) return <LoadingCircle />;
 
-  //añadir algo cuando no hay posts... un aviso.
   return (
     <main>
       <div className="search-container">
-        <div>
-          <input
-            placeholder="search by caption..."
-            className="input-search"
-            type="text"
-            ref={ref}
-          />
+        {posts && (
+          <div>
+            <input
+              placeholder="search by caption..."
+              className="input-search"
+              type="text"
+              ref={ref}
+            />
 
-          <Button name={<SearchOutlinedIcon />} onClick={handleSearch} />
-          {error && <p>{error}</p>}
-        </div>
+            <Button name={<SearchOutlinedIcon />} onClick={handleSearch} />
+          </div>
+        )}
         {token && (
           <Button
             onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
@@ -85,12 +84,9 @@ const PostsList = () => {
             )
           )
         ) : (
-          <Skeleton
-            variant="rectangular"
-            width={'100%'}
-            height={360}
-            sx={{ bgcolor: 'blue.600' }}
-          />
+          <p>{`There's not posts yet, ${
+            token ? 'click the icon on top to add one' : 'log in to add one'
+          }`}</p>
         )}
       </div>
     </main>

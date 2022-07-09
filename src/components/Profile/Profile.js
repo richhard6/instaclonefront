@@ -6,7 +6,8 @@ import Button from '../Button/Button';
 import Post from '../Post/Post';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import EditIcon from '@mui/icons-material/Edit';
-
+import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
+import CreatePost from '../CreatePost/CreatePost';
 import useFetch from '../../hooks/useFetch';
 import './styles.css';
 
@@ -24,6 +25,8 @@ const Profile = () => {
   const { user } = useUser();
 
   const [posts, loading, error] = useFetch({ userId, update, setUsername });
+
+  console.log(posts);
 
   if (loading && !posts) return <LoadingCircle />;
 
@@ -57,10 +60,16 @@ const Profile = () => {
             />
           </div>
         )}
+        {posts && user && user.id === Number(userId) && posts.length > 0 && (
+          <Button
+            onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
+            name={<AddAPhotoOutlinedIcon />}
+          />
+        )}
       </div>
 
       <div className="posts-list">
-        {posts &&
+        {posts && posts.length > 0 ? (
           posts.map(
             ({
               caption,
@@ -87,7 +96,18 @@ const Profile = () => {
                 key={id}
               />
             )
-          )}
+          )
+        ) : (
+          <p className="no-post-message">
+            You don't have posts yet, add one
+            {user && user.id === Number(userId) && (
+              <Button
+                onClick={() => setModal(<CreatePost setUpdate={setUpdate} />)}
+                name={<AddAPhotoOutlinedIcon />}
+              />
+            )}
+          </p>
+        )}
       </div>
     </main>
   );
