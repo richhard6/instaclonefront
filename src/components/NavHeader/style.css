@@ -27,6 +27,8 @@ header > h3 {
 
 .logged {
   width: 20%;
+  color: white;
+  text-decoration: none;
 }
 
 .hamburguer-nav {

@@ -23,6 +23,7 @@ const NavHeader = () => {
   };
 
   const handleNavBar = () => {
+    console.log(user);
     let timeout;
     if (show) {
       setAnimation((prevState) => (prevState = true));
@@ -39,7 +40,12 @@ const NavHeader = () => {
   return (
     <div className="container">
       <header>
-        {user && <h3 className={user ? 'logged' : ''}>@{user.username}</h3>}
+        <Link
+          to={user ? `/profile/${user.id}` : '/'}
+          className={`${user ? 'logged' : ''}`}
+        >
+          {user && <h3 className={user ? 'logged' : ''}>@{user.username}</h3>}
+        </Link>
         <Link to="/" className={`${user ? 'logged' : ''}`}>
           <h2>Instaclone</h2>
         </Link>
