@@ -9,6 +9,8 @@ const UpdateProfile = ({ type, setUpdate }) => {
 
   const [, setModal] = useModal();
 
+  //this got to be used
+
   const [onSubmit, loading, success, error] = useFormFetch({
     methodToUse: 'PUT',
     route: `users/me`,
