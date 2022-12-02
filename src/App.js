@@ -11,7 +11,7 @@ import Toast from './components/Toast/Toast';
 import { useToast } from './context/ToastContext';
 
 //le vamo a meter styled ciomponents a esto. :)K), quitar todo lo que no se usa y seguir mejorandola
-
+//Y LE METEMOS TYPESCRIPT Y REDUX
 function App() {
   const [modal] = useModal();
 
