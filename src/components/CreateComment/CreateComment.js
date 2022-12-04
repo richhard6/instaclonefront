@@ -6,7 +6,7 @@ import './styles.css';
 const CreateComment = ({ setShow, setUpdate, setModal, id }) => {
   const [comment, setComment] = useState('');
 
-  const [onSubmit, loading, success, error] = useFormFetch({
+  const [onSubmit, loading] = useFormFetch({
     bodyToUse: { comment },
     methodToUse: 'POST',
     route: `posts/${id}/comment`,

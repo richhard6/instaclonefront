@@ -13,7 +13,7 @@ const CreatePost = ({ setUpdate }) => {
 
   const [, setModal] = useModal();
 
-  const [onSubmit, loading, success, error] = useFormFetch({
+  const [onSubmit, loading] = useFormFetch({
     methodToUse: 'POST',
     route: `posts/newPost`,
     setUpdate,

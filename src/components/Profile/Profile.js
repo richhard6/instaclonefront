@@ -24,9 +24,7 @@ const Profile = () => {
 
   const { user } = useUser();
 
-  const [posts, loading, error] = useFetch({ userId, update, setUsername });
-
-  console.log(posts);
+  const [posts, loading] = useFetch({ userId, update, setUsername });
 
   if (loading && !posts) return <LoadingCircle />;
 
