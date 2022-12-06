@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [onSubmit, loading, , error] = useFormFetch({
+  const [onSubmit, loading] = useFormFetch({
     bodyToUse: { email, password },
     methodToUse: 'POST',
     route: 'users/login',
@@ -44,7 +44,6 @@ const Login = () => {
           <Button name="Log in" disabled={loading} />
         </form>
       </div>
-      {/*      {error && <p className="Error">{error}</p>} */}
     </main>
   );
 };
