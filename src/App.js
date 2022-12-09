@@ -8,9 +8,12 @@ import Modal from './components/Modal/Modal';
 import { useModal } from './context/ModalContext';
 import Profile from './components/Profile/Profile';
 import Toast from './components/Toast/Toast';
+//factorizazfr esta mierda, hacer unm punmto de entrrada
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
-//le vamo a meter styled ciomponents a esto. :)K), quitar todo lo que no se usa y seguir mejorandola
-//Y LE METEMOS TYPESCRIPT Y REDUX
 function App() {
   const [modal] = useModal();
 
