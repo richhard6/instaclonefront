@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useToast } from '../context/ToastContext';
 import { useUser } from '../context/UserContext';
 import { baseURL } from '../utils/constants';
 
 const useFetch = ({ keyword, update, userId, setUsername }) => {
-  const { token } = useUser();
   const { handleToast } = useToast();
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const [posts, setPosts] = useState(null);
+  const { token } = useUser();
+
+  console.log(token);
 
   useEffect(() => {
     const params = token
@@ -19,7 +21,7 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
             Authorization: token,
           },
         }
-      : {};
+      : ' ';
 
     const fetchPosts = async () => {
       setLoading((prevState) => (prevState = true));
