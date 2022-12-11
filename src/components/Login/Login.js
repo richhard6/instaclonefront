@@ -17,7 +17,7 @@ const Login = () => {
     route: 'users/login',
   });
 
-  if (token) return <Navigate to="/" />;
+  if (!token) return <Navigate to="/login" />;
 
   return (
     <main>
