@@ -21,7 +21,7 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
             Authorization: token,
           },
         }
-      : ' ';
+      : {};
 
     const fetchPosts = async () => {
       setLoading((prevState) => (prevState = true));

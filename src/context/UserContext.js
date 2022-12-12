@@ -26,12 +26,12 @@ export const UserProvider = ({ children }) => {
         },
       });
       const { data } = await response.json();
-      if (user) setUser(data.user[0]);
+      setUser(data.user[0]);
     };
     if (token) {
       getUserData();
     }
-  }, [token, userRefresh, user]);
+  }, [token, userRefresh]);
 
   const values = {
     token,
