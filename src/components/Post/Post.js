@@ -11,6 +11,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './styles.css';
 import { useToast } from '../../context/ToastContext';
+import { handleDelete } from '../../helpers/handleDelete';
 
 const Post = ({
   username,
@@ -35,31 +36,25 @@ const Post = ({
   const dateTime = format(new Date(createdAt), 'yyyy-MM-dd');
   const dateWithHour = format(new Date(createdAt), 'hh:mm - dd/MM/yyyy');
 
-  const handleDelete = async () => {
-    await fetch(`${baseURL}/posts/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then((json) => json.json())
-      .then((data) => {
-        handleToast('success', data.message);
-      });
-
-    setUpdate((prev) => !prev);
-  };
-
   //HACER QUE LA X NO APAREAZCA SI NO ERES DUEÑO DEL POST ! . Y AESTHETIK IT
 
+  //FIX THE ERROR MESSAGE WHEN YOU CANT DELETE THE IMAGE BECAUSE IS NOT YOURS
+
+  //AND SOMEHOW THE LIKE FUNCTIOJNABILITY IS NOT WORKIGF :)
   return (
     <article className="post-container">
       <img src={`${baseURL}/${picture}`} alt="pic" className="post-image" />
 
       <div className="post-info">
         <div className="like-container">
-          <button onClick={token ? () => handleDelete() : null}>
-            NO ENTIENDO
+          <button
+            onClick={
+              token
+                ? () => handleDelete(setUpdate, handleToast, id, token)
+                : null
+            }
+          >
+            X
           </button>
           <button
             onClick={token ? () => handleLike(token, id, setUpdate) : null}
