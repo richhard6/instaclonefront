@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import './styles.css';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useUser } from '../../context/UserContext';
-import Button from '../Button/Button';
 import { useModal } from '../../context/ModalContext';
-import CreateComment from '../CreateComment/CreateComment';
-import { Link } from 'react-router-dom';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { baseURL } from '../../utils/constants';
 import { handleLike } from '../../helpers/handleLike';
+import Button from '../Button/Button';
+import CreateComment from '../CreateComment/CreateComment';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import './styles.css';
 
 const Post = ({
   username,
@@ -32,27 +32,43 @@ const Post = ({
   const dateTime = format(new Date(createdAt), 'yyyy-MM-dd');
   const dateWithHour = format(new Date(createdAt), 'hh:mm - dd/MM/yyyy');
 
+  useEffect(() => {
+    setUpdate((prevState) => !prevState);
+  }, [setUpdate]); //SE BORRA PERO NO SE REFRESCA LA PAGIN ! :))9
+
+  const handleDelete = async () => {
+    await fetch(`${baseURL}/posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((json) => json.json())
+      .then((data) => data);
+  };
+
   return (
     <article className="post-container">
       <img src={`${baseURL}/${picture}`} alt="pic" className="post-image" />
 
-      {/* Info del post */}
-
       <div className="post-info">
         <div className="like-container">
+          <button onClick={token ? () => handleDelete() : null}>
+            NO ENTIENDO
+          </button>
           <button
             onClick={token ? () => handleLike(token, id, setUpdate) : null}
-          >
-            {likedByMe ? (
-              <FavoriteIcon
-                sx={{ color: 'red', cursor: token ? 'pointer' : 'default' }}
-              />
-            ) : (
-              <FavoriteBorderIcon
-                sx={{ cursor: token ? 'pointer' : 'default' }}
-              />
-            )}
-          </button>
+          ></button>
+          {likedByMe ? (
+            <FavoriteIcon
+              sx={{ color: 'red', cursor: token ? 'pointer' : 'default' }}
+            />
+          ) : (
+            <FavoriteBorderIcon
+              sx={{ cursor: token ? 'pointer' : 'default' }}
+            />
+          )}
+
           <span>{likes}</span>
         </div>
 
