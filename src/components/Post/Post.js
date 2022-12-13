@@ -32,10 +32,6 @@ const Post = ({
   const dateTime = format(new Date(createdAt), 'yyyy-MM-dd');
   const dateWithHour = format(new Date(createdAt), 'hh:mm - dd/MM/yyyy');
 
-  useEffect(() => {
-    setUpdate((prevState) => !prevState);
-  }, [setUpdate]); //SE BORRA PERO NO SE REFRESCA LA PAGIN ! :))9
-
   const handleDelete = async () => {
     await fetch(`${baseURL}/posts/${id}`, {
       method: 'DELETE',
@@ -45,6 +41,8 @@ const Post = ({
     })
       .then((json) => json.json())
       .then((data) => data);
+
+    setUpdate((prev) => !prev);
   };
 
   return (
