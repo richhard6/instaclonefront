@@ -1,8 +1,12 @@
-/* const UserProvider = require('./UserContext');
-const ModalProvider = require('./ModalProvider');
-const ToastProvider = require('./ToastContext');
+import { useModal, ModalProvider } from './ModalContext';
+import { useToast, ToastProvider } from './ToastContext';
+import { useUser, UserProvider } from './UserContext';
 
-export = { UserProvider, ModalProvider, ToastProvider };
- */
-
-//Centralizasr estro
+export const modules = {
+  useModal,
+  ModalProvider,
+  useToast,
+  ToastProvider,
+  useUser,
+  UserProvider,
+};

@@ -3,14 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
-import { UserProvider } from './context/UserContext';
-
-import { ModalProvider } from './context/ModalContext';
-
-import { ToastProvider } from './context/ToastContext';
-
+import { modules } from './context/index';
 import { BrowserRouter } from 'react-router-dom';
+const { UserProvider, ModalProvider, ToastProvider } = modules;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

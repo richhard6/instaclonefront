@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useUser } from '../../context/UserContext';
@@ -40,7 +40,10 @@ const Post = ({
 
   //FIX THE ERROR MESSAGE WHEN YOU CANT DELETE THE IMAGE BECAUSE IS NOT YOURS
 
-  //AND SOMEHOW THE LIKE FUNCTIOJNABILITY IS NOT WORKIGF :)
+  //AND SOMEHOW THE LIKE FUNCTIOJNABILITY IS NOT WORKIGF < :)
+
+  //AND THE SEARCH BAR IS NOT WORKING EITHER :)))
+
   return (
     <article className="post-container">
       <img src={`${baseURL}/${picture}`} alt="pic" className="post-image" />
