@@ -14,6 +14,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+//REACT HELMET FOR seo
+
 function App() {
   const [modal] = useModal();
 

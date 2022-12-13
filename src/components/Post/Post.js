@@ -10,6 +10,7 @@ import CreateComment from '../CreateComment/CreateComment';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './styles.css';
+import { useToast } from '../../context/ToastContext';
 
 const Post = ({
   username,
@@ -24,6 +25,8 @@ const Post = ({
   setUpdate,
 }) => {
   const [show, setShow] = useState(false);
+
+  const { handleToast } = useToast();
 
   const [, setModal] = useModal();
 
@@ -40,10 +43,14 @@ const Post = ({
       },
     })
       .then((json) => json.json())
-      .then((data) => data);
+      .then((data) => {
+        handleToast('success', data.message);
+      });
 
     setUpdate((prev) => !prev);
   };
+
+  //HACER QUE LA X NO APAREAZCA SI NO ERES DUEÑO DEL POST ! . Y AESTHETIK IT
 
   return (
     <article className="post-container">
