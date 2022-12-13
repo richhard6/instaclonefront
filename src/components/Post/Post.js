@@ -43,10 +43,11 @@ const Post = ({
 
   //AND THE SEARCH BAR IS NOT WORKING EITHER :)))
 
+  //MODAL PARA PREGUNTAR IS ESTAS SEGURO DE HACJER ESTO=
+
   return (
     <article className="post-container">
       <img src={`${baseURL}/${picture}`} alt="pic" className="post-image" />
-
       <div className="post-info">
         <div className="like-container">
           <button
@@ -85,7 +86,7 @@ const Post = ({
 
           <p>{caption}</p>
 
-          <div className="">
+          <div>
             <div>
               {comments && (
                 <p

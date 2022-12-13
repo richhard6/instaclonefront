@@ -48,8 +48,7 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
     };
 
     fetchPosts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keyword, update, token, setUsername, userId]);
+  }, [keyword, update, token, setUsername, userId, handleToast]);
 
   return [posts, loading, error];
 };
