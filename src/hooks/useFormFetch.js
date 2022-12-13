@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { modules } from '../context/index';
-
 import { baseURL } from '../utils/constants';
 const { useToast, useUser } = modules;
 
@@ -14,9 +13,7 @@ const useFormFetch = ({
   formRef,
 }) => {
   const { setTokenInLocalStorage, token, setUserRefresh } = useUser();
-
   const { handleToast } = useToast();
-
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -29,6 +26,7 @@ const useFormFetch = ({
       : { Authorization: token };
 
     setLoading(true);
+
     try {
       const response = await fetch(`${baseURL}/${route}`, {
         method: methodToUse,
@@ -40,7 +38,6 @@ const useFormFetch = ({
 
       if (data.status === 'error') {
         setError(data.message);
-
         handleToast('error', data.message);
       } else {
         if (route === 'users/login') setTokenInLocalStorage(data.data.token);
@@ -57,7 +54,6 @@ const useFormFetch = ({
           setUpdate((prevState) => !prevState);
           setModal('');
         }
-
         setSuccess(true);
       }
     } catch (err) {
@@ -69,7 +65,6 @@ const useFormFetch = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     fetchData();
   };
 

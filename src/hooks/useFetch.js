@@ -5,14 +5,10 @@ const { useToast, useUser } = modules;
 
 const useFetch = ({ keyword, update, userId, setUsername }) => {
   const { handleToast } = useToast();
-
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
   const [posts, setPosts] = useState(null);
   const { token } = useUser();
-
-  console.log(token);
 
   useEffect(() => {
     const params = token
@@ -32,7 +28,6 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
 
       try {
         const response = await fetch(endpointToGo, params);
-
         const data = await response.json();
 
         if (data.status === 'error' && keyword) {
