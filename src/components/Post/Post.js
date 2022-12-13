@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
-import { useUser } from '../../context/UserContext';
-import { useModal } from '../../context/ModalContext';
 import { baseURL } from '../../utils/constants';
 import { handleLike } from '../../helpers/handleLike';
 import Button from '../Button/Button';
 import CreateComment from '../CreateComment/CreateComment';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import './styles.css';
-import { useToast } from '../../context/ToastContext';
 import { handleDelete } from '../../helpers/handleDelete';
+import { modules } from '../../context/index';
+import './styles.css';
+const { useModal, useUser, useToast } = modules;
 
 const Post = ({
   username,

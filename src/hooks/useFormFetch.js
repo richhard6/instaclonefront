@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useToast } from '../context/ToastContext';
-import { useUser } from '../context/UserContext';
+import { modules } from '../context/index';
+
 import { baseURL } from '../utils/constants';
+const { useToast, useUser } = modules;
 
 const useFormFetch = ({
   bodyToUse,

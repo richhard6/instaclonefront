@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
-import { useToast } from '../context/ToastContext';
-import { useUser } from '../context/UserContext';
+import { useEffect, useState } from 'react';
+import { modules } from '../context/index';
 import { baseURL } from '../utils/constants';
+const { useToast, useUser } = modules;
 
 const useFetch = ({ keyword, update, userId, setUsername }) => {
   const { handleToast } = useToast();
