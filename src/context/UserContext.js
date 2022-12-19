@@ -26,7 +26,10 @@ export const UserProvider = ({ children }) => {
         },
       });
       const { data } = await response.json();
-      setUser(data.user[0]);
+
+      if (data) {
+        setUser(data.user[0]);
+      }
     };
     if (token) {
       getUserData();

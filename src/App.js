@@ -8,16 +8,31 @@ import Modal from './components/Modal/Modal';
 import { useModal } from './context/ModalContext';
 import Profile from './components/Profile/Profile';
 import Toast from './components/Toast/Toast';
+
 //factorizazfr esta mierda, hacer unm punmto de entrrada
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { baseURL } from './utils/constants';
+import { useEffect } from 'react';
 
 //REACT HELMET FOR seo
 
 function App() {
   const [modal] = useModal();
+
+  useEffect(() => {
+    const doAsync = async () => {
+      const wat = await fetch(`${baseURL}hola`);
+
+      const data = await wat.json();
+
+      console.log(data);
+    };
+
+    doAsync();
+  }, []);
 
   return (
     <>

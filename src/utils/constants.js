@@ -1,1 +1,3 @@
-export const baseURL = 'http://localhost:4000';
+export const baseURL = 'https://instaxaxa-4j7jq.ondigitalocean.app/';
+
+export const blyat = 'http://localhost:4000';

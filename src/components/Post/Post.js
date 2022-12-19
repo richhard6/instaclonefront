@@ -45,6 +45,11 @@ const Post = ({
 
   //MODAL PARA PREGUNTAR IS ESTAS SEGURO DE HACJER ESTO=
 
+  //HACER PAGINA DETALLE ESPWECIFICA DECADA POST
+
+  //MODIFICAR LOS ENDPOINTS DE LA DATABASE PARA QUE SEA CUANDO ESRTAS EN LOCALJOSt
+  //USAR LOCALGOST O SINO USAR https://instaxaxa-4j7jq.ondigitalocean.app
+
   return (
     <article className="post-container">
       <img src={`${baseURL}/${picture}`} alt="pic" className="post-image" />
