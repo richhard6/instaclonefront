@@ -32,6 +32,8 @@ function App() {
     };
 
     doAsync();
+
+    //HEALTHCHECKKK FROM FRONTEND ;:))
   }, []);
 
   return (
