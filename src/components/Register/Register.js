@@ -21,7 +21,7 @@ const Register = () => {
     route: 'users/register',
   });
 
-  if (token) navigate('/');
+  //if (token) navigate('/');
 
   useEffect(() => {
     if (success) navigate('/login');

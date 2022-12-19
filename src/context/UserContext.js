@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const response = await fetch(`${baseURL}/users/me/profile`, {
+      const response = await fetch(`${baseURL}users/me/profile`, {
         headers: {
           Authorization: token,
         },

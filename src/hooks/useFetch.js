@@ -23,8 +23,8 @@ const useFetch = ({ keyword, update, userId, setUsername }) => {
       setLoading((prevState) => (prevState = true));
 
       const endpointToGo = userId
-        ? `${baseURL}/users/${userId}/`
-        : `${baseURL}/posts?query=${keyword}`;
+        ? `${baseURL}users/${userId}/`
+        : `${baseURL}posts?query=${keyword}`;
 
       try {
         const response = await fetch(endpointToGo, params);

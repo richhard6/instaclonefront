@@ -24,7 +24,12 @@ function App() {
 
   useEffect(() => {
     const doAsync = async () => {
-      const wat = await fetch(`${baseURL}hola`);
+      const wat = await fetch(`${baseURL}users/me`, {
+        headers: {
+          Authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoiY3JhenkiLCJpYXQiOjE2NzA4NDA5MTYsImV4cCI6MTY3MzQzMjkxNn0.u4Mkf6M1qVTP0i13mXEFhuqVnEHOcfB6yNvIV0mD0hU',
+        },
+      });
 
       const data = await wat.json();
 

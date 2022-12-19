@@ -28,7 +28,7 @@ const useFormFetch = ({
     setLoading(true);
 
     try {
-      const response = await fetch(`${baseURL}/${route}`, {
+      const response = await fetch(`${baseURL}${route}`, {
         method: methodToUse,
         headers: headerToUse,
         body: bodyToUse ? JSON.stringify(bodyToUse) : formParsed,
