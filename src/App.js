@@ -22,7 +22,7 @@ import { useEffect } from 'react';
 function App() {
   const [modal] = useModal();
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const doAsync = async () => {
       const wat = await fetch(`${baseURL}users/me`, {
         headers: {
@@ -39,7 +39,7 @@ function App() {
     doAsync();
 
     //HEALTHCHECKKK FROM FRONTEND ;:))
-  }, []);
+  }, []); */
 
   return (
     <>
