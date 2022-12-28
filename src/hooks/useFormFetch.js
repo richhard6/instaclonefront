@@ -49,14 +49,14 @@ const useFormFetch = ({
         setError(data.message);
         handleToast('error', data.message);
       } else {
-        if (route === '/users/login') setTokenInLocalStorage(data.data.token);
+        if (route === 'users/login') setTokenInLocalStorage(data.data.token);
         if (
           route.includes('comment') ||
-          route === '/posts/newPost' ||
-          route === '/users/me'
+          route === 'posts/newPost' ||
+          route === 'users/me'
         ) {
           if (route.includes('comment')) setShow(true);
-          if (route === '/users/me' || route === '/posts/newPost') {
+          if (route === 'users/me' || route === 'posts/newPost') {
             handleToast('success', data.message);
             if (route === '/users/me')
               setUserRefresh((prevState) => !prevState);
