@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { modules } from '../context/index';
 import { baseURL } from '../utils/constants';
+
 const { useToast, useUser } = modules;
 
 const useFormFetch = ({
@@ -34,22 +35,31 @@ const useFormFetch = ({
         body: bodyToUse ? JSON.stringify(bodyToUse) : formParsed,
       });
 
+      /*       const response = await axios({
+        method: methodToUse,
+        url: `${baseURL}${route}`,
+        headers: headerToUse,
+        responseType: 'stream',
+        data: bodyToUse ? JSON.stringify(bodyToUse) : formParsed,
+      }); */
+
       const data = await response.json();
 
       if (data.status === 'error') {
         setError(data.message);
         handleToast('error', data.message);
       } else {
-        if (route === 'users/login') setTokenInLocalStorage(data.data.token);
+        if (route === '/users/login') setTokenInLocalStorage(data.data.token);
         if (
           route.includes('comment') ||
-          route === 'posts/newPost' ||
-          route === 'users/me'
+          route === '/posts/newPost' ||
+          route === '/users/me'
         ) {
           if (route.includes('comment')) setShow(true);
-          if (route === 'users/me' || route === 'posts/newPost') {
+          if (route === '/users/me' || route === '/posts/newPost') {
             handleToast('success', data.message);
-            if (route === 'users/me') setUserRefresh((prevState) => !prevState);
+            if (route === '/users/me')
+              setUserRefresh((prevState) => !prevState);
           }
           setUpdate((prevState) => !prevState);
           setModal('');
