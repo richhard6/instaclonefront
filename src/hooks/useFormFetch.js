@@ -22,8 +22,12 @@ const useFormFetch = ({
   const fetchData = async () => {
     const formParsed = formRef ? new FormData(formRef.current) : '';
 
+    console.log(route);
     const headerToUse = bodyToUse
-      ? { 'Content-Type': 'application/json', Authorization: token }
+      ? {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        }
       : { Authorization: token };
 
     setLoading(true);
